@@ -1,0 +1,15 @@
+<h2>Schedule a New Mission</h2>
+
+<% if flash[:messages] %>
+    <h4><%= flash[:messages] %></h4>
+<% end %>
+
+<%= form_for @mission do |f| %>
+    <%= f.label "Name:" %>
+    <%= f.text_field :name %>
+    <%= f.label "Scientist:" %>
+    <%= f.collection_select :scientist_id, Scientist.all, :id, :name %>
+    <%= f.label "Planet:" %>
+    <%= f.collection_select :planet_id, Planet.all, :id, :name %>
+    <%= f.submit %>
+<% end %>
